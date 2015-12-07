@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ADF Widget Sample">
+
+    <!-- <link rel="stylesheet" href="http://micoff.local:8000/app.full.less.css"> -->
+    <link rel="stylesheet" href="http://micoff.local:8000/assets/bootstrap-4.0.0-alpha/dist/css/bootstrap.css">
+
+    <title>ADF Curation Widget</title>
+
+    <!-- bower:css -->
+    <!-- endbower -->
+
+    <!-- inject:css -->
+    <!-- endinject -->
+
+    <!-- inline css -->
+    <style type="text/css">
+        body {
+            padding-top: 100px;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="http://micoff.local:8000/app.full.less.css" /> -->
+</head>
+
+<body ng-app="adfWidgetSample">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ADF Curation Widget</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" ng-controller="dashboardController">
+        <adf-dashboard name="widgetSampleDashboard" structure="4-8" adf-model="dashboard.model" editable="true" maximizable="true" enable-confirm-delete="true" collapsible="true" class="card" />
+    </div>
+
+    <!-- bower:js -->
+    <!-- endbower -->
+
+    <!-- inject:js -->
+    <!-- endinject -->
+    <script src="../components/service/firephd.js"></script>
+    <script src="../components/service/project.js"></script>
+    <script src="../components/service/FFBASE.js"></script>
+
+    <script type="text/javascript">
+        angular.module('adfWidgetSample', ['adf', 'adf.widget.collectionwidget', 'LocalStorageModule', 'lk-google-picker'])
+            .config(function(dashboardProvider, localStorageServiceProvider) {
+                localStorageServiceProvider.setPrefix('adf.curationwidget');
+                dashboardProvider.structure('4-8', {
+                    rows: [{
+                        columns: [{
+                            styleClass: 'col-md-10',
+                            widgets: []
+                        }, {
+                            styleClass: 'col-md-20',
+                            widgets: []
+                        }]
+                    }]
+                })
+            }).config(['lkGoogleSettingsProvider', function(lkGoogleSettingsProvider) {
+
+                // Configure the API credentials here
+                lkGoogleSettingsProvider.configure({
+                    apiKey: 'AIzaSyDNlAoaOSZVX575bPjKgmvrfRRe7Y7xykM',
+                    clientId: '363341291299-eukgd4vr897ag1pkusmr1csuqvp6l45f.apps.googleusercontent.com',
+                    scopes: ['https://www.googleapis.com/auth/devstorage.full_control', 'https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/plus.me'],
+                    views: ['DocsView().setIncludeFolders(true).setSelectFolderEnabled(true)',
+                        'DocsUploadView().setParent("0ByK0faNWvR2sTUxoOVlIUUVtRG8")'
+                    ]
+                });
+            }]).constant('FIREBASE_URL', 'https://lexlab.firebaseio.com/').controller('dashboardController', function($scope, localStorageService) {
+                var model = localStorageService.get('widgetSampleDashboard');
+                if (!model) {
+                    model = {
+                        rows: [{
+                            columns: [{
+                                styleClass: 'col-md-10'
+                            }, {
+                                styleClass: 'col-md-20',
+                                widgets: [{
+                                    type: 'curationwidget',
+                                    title: 'Curation',
+                                    config: {
+                                        id: '0'
+                                    }
+                                }]
+                            }]
+                        }]
+                    };
+                }
+                $scope.dashboard = {
+                    model: model
+                };
+                $scope.$on('adfDashboardChanged', function(event, name, model) {
+                    localStorageService.set(name, model);
+                });
+            });
+    </script>
+
+</body>
+
+</html>

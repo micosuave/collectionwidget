@@ -1,0 +1,96 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"></div>
+    <div class="panel-body" style="overflow:scroll;">
+        <tabset class="">
+
+            <tab class="ngDialogTab">
+                <tab-heading><i class="fa fa-cog"></i></tab-heading>
+                <input type="text" ng-model="curation.title">
+                <select ng-model="curation.curation_type" ng-options="type.value as type.label for type in curation_types">
+                    <option value="" label=""></option>
+                </select>
+
+                <div class="card card-fancy">
+                    <input type="text" ng-model="item.title">
+                    <select ng-model="item.content_type">
+                        <option value="image" label="image"></option>
+                        <option value="video" label="video"></option>
+                        <option value="note" label="note"></option>
+                        <option value="document" label="document"></option>
+                        <option value="collection" label="collection"></option>
+                        <option value="curation" label="curation"></option>
+                        <option value="draft" label="draft"></option>
+                        <option value="link" label="link"></option>
+                        <option value="" label=""></option>
+                    </select>
+                    <input type="text" ng-model="item.data">
+                    <button class="fa fa-plus" ng-click="addcontent(item)"></button>
+                </div>
+                <li class="list-group-item card card-fancy">
+                    <input type="text" ng-model="id" placeholder="insert ID" />
+                    <a class="fa fa-link" ng-click="addById(id)"></a>
+                </li>
+                <li class="list-group-item card card-success row" style="background:url(img/logolong.png) no-repeat;background-size:contain;">
+                    <input type="text" ng-model="history.APPNUM" placeholder="USSN Application #">
+
+                    <button lk-google-picker on-picked="addevent" class="fa fa-plus pull-right card-text">Upload</button>
+                </li>
+            </tab>
+
+            <tab class=" ngDialogTab ">
+
+                <tab-heading>Content List</tab-heading>
+
+
+
+                <ul class="list-group">
+                    <li class="list-group-item card card-fancy card-rounded card-thick" ng-repeat="item in curation.data" ffbase="{{item}}">
+                        <tabset>
+                            <tab heading="settings">
+                                <input type="text" ng-model="item.title">
+                                <select ng-model="item.content_type">
+                                    <option value="image" label="image"></option>
+                                    <option value="video" label="video"></option>
+                                    <option value="note" label="note"></option>
+                                    <option value="document" label="document"></option>
+                                    <option value="collection" label="collection"></option>
+                                    <option value="curation" label="curation"></option>
+                                    <option value="draft" label="draft"></option>
+                                    <option value="link" label="link"></option>
+                                    <option value="" label=""></option>
+                                </select>
+                                <input type="text" ng-model="item.data">
+                            </tab>
+
+                            <tab heading="view">
+                                <content-item content="item">
+
+
+                                </content-item>
+                            </tab>
+                        </tabset>
+                    </li>
+
+                </ul>
+
+
+
+            </tab>
+
+           <!-- <tab class=" ngDialogTab">
+    <tab-heading>Project</tab-heading>
+    <div doccer="{{curation.projectid}}"></div>
+</tab>
+<tab class=" ngDialogTab">
+    <tab-heading>View</tab-heading>
+    <iframe id="ibrief" name="ibrief" src="http://micoff.local:8000/assets/pdf.html" width="100%" height="420px" class="card card-NOA card-block "></iframe>
+    <div>
+        <p smartpanel="{{collection.$id}}"></p>
+        <div class="dashed-outline" style="width:75px;height:75px;" ng-class="{'pull-left':(roarevent.class===!'Applicant'),'pull-right':(roarevent.class==='Applicant')}" ng-repeat="roarevent in collection.roarevents"></div>
+        <div class="dashed-outline fa fa-plus" style="width:75px;height:75px;" lk-google-picker on-picked="addevent"></div>
+    </div>
+</tab>
+ -->
+            <tab class="ngDialogTab" ng-if="!curation.ispublished" ng-click="publish(curation.$id)" heading="Publish"></tab>
+        </tabset>
+    </div>

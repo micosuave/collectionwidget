@@ -1,0 +1,30 @@
+<div id="loginpanelbodycontainer" class="container-fluid" style="">
+
+    <div class="row loginflexrow">
+        <div ng-if="!authData" class="loginform">
+            <h3><strong>Welcome, please log in</strong></h3>
+            <form id="loginForm" name="loginForm" ng-submit="user.login()">
+                <formgroup class="emailgroup">
+                    Email
+                    <!-- <small class="pull-right" style="color:inherit;">(<span ng-dialog="register.html" ng-dialog-class="ngdialog-theme-default" ng-dialog-controller="RegistrationController" style="color:steelblue;" class="register">Register</span>)</small> -->
+                    <input class="form-control" type="email" name="email" ng-model="user.email" required/>
+                </formgroup>
+                <formgroup class="passwordgroup">
+                    Password
+                    <input class="form-control" type="password" name="password" ng-model="user.password" required/>
+                </formgroup>
+                <br />
+                <div class="row">
+                    <div class="col-xs-15">
+                        <!-- <small><span ng-dialog="resetPassword.html" ng-dialog-class="ngdialog-theme-default" ng-dialog-controller="PasswordController" style="color:steelblue;" class="forgotpassword">Forgot password?</span> -->
+                        <!-- </small> -->
+                    </div>
+                    <div class="col-xs-15">
+                        <button id="submitBtn" class="btn btn-primary pull-right" type="submit" ng-click="user.login()">Log in</button>
+                    </div>
+                </div>
+            </form>
+
+            <h6 class="pull-right">A Smart Desk for Lawyers, Everywhere.&#8480</h6>
+
+        </div>

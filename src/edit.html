@@ -1,0 +1,114 @@
+<form role="form">
+    <div class="form-group">
+        <!--  <label for="layout">Layout</label>
+        <select ng-model="config.layout" ng-change="" ng-options="layout as layout.name for layout in layouts" class="form-control" id="layout" placeholder="Select Layout...">
+            <option value="" label=""></option>
+        </select>
+ -->
+        <!-- <input type="text" class="form-control" id="sample" ng-model="config.sample" placeholder="Enter sample"> -->
+        <!--   </div>
+    <div class="form-group">
+        <label for="collection">Use Collection</label>
+        <select ng-model="config.collectionid" ng-change="reload()" ng-options="collection.$id as collection.name for collection in collections" class="form-control" id="collection" placeholder="Select Collection..." required>
+            <option value="" label=""></option>
+            <option value="new" label="new..."></option>
+        </select> -->
+
+        <!-- <input type="text" class="form-control" id="sample" ng-model="config.sample" placeholder="Enter sample"> -->
+
+        <div class="input-group btn btn-{{curation.styleClass}}">
+
+            <!-- <input type="number" ng-model="collection.index" placeholder="#" width="25px">
+
+            <span class="input-group-addon btn btn-{{collection.panelclass}}" style="color: #fff;">Collection Box: </span>
+
+            <input type="text" ng-model="collection.box" placeholder="Box" style="color: #000;" />
+
+            <button class="btn btn-danger btn-xs fa fa-close pull-right" ng-dialog="collectionDialogDelete" ng-dialog-controller="DeleteDialogCtrl" ng-dialog-data="{{collection}}" ng-dialog-class="ngdialog-theme-default" ng-dialog-show-close="true"></button>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-stripped table-condensed well">
+            <tr>
+                <td>
+                    <div class="input-group"> <span class="input-group-addon btn btn-{{collection.panelclass}}" style="color: #fff;">R#: </span>
+                        <input ng-model="collection.rid" placeholder="Collection ID" type="text" />
+                    </div>
+                </td>
+                <td>
+ -->
+            <div class="input-group"> <span class="input-group-addon btn btn-{{curation.styleClass}}" style="color: #fff;">Name: </span>
+                <input ng-model="curation.name" placeholder="Name" type="text" />
+            </div>
+            <!-- </td>
+                <td>
+                    <div class="input-group"><span class="input-group-addon btn btn-{{collection.panelclass}}" style="color: #fff;">Type: </span>
+                        <select ng-model="collection.collectiontype">
+                            <option value="source" label="Source Collection"></option>
+                            <option value="workproduct" label="Draft Collection"></option>
+                            <option value="anthology" label="Anthology Collection"></option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td> -->
+            <div class="input-group"> <span class="input-group-addon btn btn-{{curation.styleClass}}" style="color: #fff;">Title: </span>
+                <input ng-model="curation.title" placeholder="Title" type="text" />
+            </div>
+            <!--  </td>
+
+                <td>
+                    <div class="input-group"> <span class="input-group-addon btn btn-{{curation.styleClass}}" style="color: #fff;">Date</span>
+                        <input ng-model="collection.datefiled" placeholder="Filing Date" type="text" />
+                    </div>
+                </td>
+
+
+
+
+                <td> -->
+            <div class="input-group"><span class="input-group-addon btn btn-{{curation.styleClass}}" style="color: #777;">Color: </span>
+                <select ng-model="curation.styleClass " class="btn btn-{{curation.styleClass}} ">
+                    <option value="primary " label="Blue "></option>
+                    <option value="info " label="Cyan "></option>
+                    <option value="success " label="Green "></option>
+                    <option value="warning " label="Yellow "></option>
+                    <option value="danger " label="Red "></option>
+                    <option value="default " label="White "></option>
+                    <option value="flat " label="Gray "></option>
+                    <option value="dark" label="Dark"></option>
+                </select>
+            </div>
+            <!-- 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-group "> <span class="input-group-addon btn btn-{{collection.panelclass}} " style="color: #fff; ">Patent#: </span>
+                        <input ng-model="collection.patentnum " placeholder="US " type="text " />
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group "> <span class="input-group-addon btn btn-{{collection.panelclass}} " style="color: #fff; ">Issued: <i/span><input ng-model="collection.dateissued " placeholder="ISSUEDATE " type="text " /></div>
+        </td>
+
+        <td> -->
+            <div class="input-group "><span class="input-group-addon btn btn-{{collection.panelclass}} fa {{curation.icon}} " style="color: #fff; ">Icon: </span>
+                <select ng-model="curation.icon " class="btn btn-{{curation.styleClass}} fa {{curation.icon}} " ng-options="icon.value as icon.label for icon in ICONS ">
+
+                </select>
+            </div>
+            <!-- </td>
+            </tr>
+            </i>
+            </span>
+    </div>
+    </td>
+    </tr>
+    </table>
+    </div> -->
+
+
+</form>
