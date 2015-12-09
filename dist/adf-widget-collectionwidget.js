@@ -10,7 +10,7 @@ angular.module('adf.widget.collectionwidget', ['adf.provider', 'firebase'])
                 templateUrl: '{widgetsPath}/collectionwidget/src/view.html',
                 controller: 'CurationWidgetCtrl',
                 controllerAs: 'curation',
-                frameless: false,
+                frameless: true,
                 reload: true,
                 titleTemplateUrl: '{widgetsPath}/collectionwidget/src/titleTemplateUrl.html',
                 resolve: {
